@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title><h:outputText value="#{msg.tituloRfid}" /></title>
+	<ui:include src="Header.xhtml"></ui:include>
+</h:head>
+<h:body>
+
+	<p:growl id="message" />
+
+	<h:form id="formListagem">
+		<p:panel header="#{msg.cabecalhoTabelaRfid}">
+			<p:dataTable emptyMessage="#{msg.nenhumRegistro}" paginator="true"
+				rows="5" id="tabela" value="#{rfidBean.rfidList}" var="rfidCur">
+
+				<f:facet name="header">
+					<p:commandButton value="#{msg.botaoNovo}"
+						onclick="PF('dialogo').show();" actionListener="#{rfidBean.novo}"
+						update=":message :formCadastro:panelInfos">
+						<f:actionListener
+							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>
+				</f:facet>
+
+				<p:column headerText="#{msg.cadastroCampoNome}"
+					filterBy="#{rfidCur.name}" sortBy="#{rfidCur.name}">
+					<h:outputText value="#{rfidCur.name}" />
+				</p:column>
+
+				<p:column headerText="#{msg.cadastroCampoModelo}"
+					sortBy="#{rfidCur.model}" filterBy="#{rfidCur.model}">
+					<h:outputText value="#{rfidCur.model}" />
+				</p:column>
+
+				<p:column headerText="#{msg.cadastroCampoFabricante}"
+					filterBy="#{rfidCur}" sortBy="#{rfidCur.manufacturer.name}">
+					<h:outputText value="#{rfidCur.manufacturer.name}" />
+				</p:column>
+
+				<p:column headerText="#{msg.cadastroCampoLocal}">
+					<h:outputText value="#{rfidCur.location.name}" />
+				</p:column>
+
+				<p:column headerText="#{msg.tabelaCampoOpcoes}">
+					<!-- Botão Excluir -->
+					<p:commandButton icon="ui-icon-trash"
+						actionListener="#{rfidBean.delete}"
+						update=":message :formListagem:tabela">
+						<p:confirm header="#{msg.confirmacao}" message="#{msg.certeza}"
+							icon="ui-icon-alert" />
+						<!-- Disparando um evento para obter o objeto da linha selecionada -->
+						<f:attribute name="rfidSelected" value="#{rfidCur}" />
+					</p:commandButton>
+
+					<!-- Botão Editar -->
+					<p:commandButton icon="ui-icon-pencil"
+						onclick="PF('dialogo').show();"
+						actionListener="#{rfidBean.update}"
+						update=":message :formCadastro:panelInfos">
+						<f:attribute name="rfidSelected" value="#{rfidCur}" />
+						<f:actionListener
+							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog global="true">
+				<p:commandButton value="#{msg.sim}" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="#{msg.nao}" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</p:panel>
+	</h:form>
+
+	<p:dialog header="#{msg.cabecalhoCadastroRfid}" widgetVar="dialogo"
+		draggable="false" resizable="false" modal="true" closable="false">
+		<h:form id="formCadastro">
+			<h:panelGrid columns="2" id="panelInfos">
+				<p:outputLabel for="nome" value="#{msg.cadastroCampoNome}: " />
+				<p:inputText id="nome" value="#{rfidBean.rfid.name}" maxlength="50"
+					size="30" required="true" requiredMessage="#{msg.validaCampoNome}" />
+
+				<p:outputLabel for="modelo" value="#{msg.cadastroCampoModelo}: " />
+				<p:inputText id="modelo" value="#{rfidBean.rfid.model}"
+					maxlength="20" size="15" required="true"
+					requiredMessage="#{msg.validaCampoModelo}" />
+
+				<p:outputLabel for="fabricante"
+					value="#{msg.cadastroCampoFabricante}: " />
+				<p:selectOneMenu id="fabricante" required="true"
+					requiredMessage="#{msg.validaCampoFabricante}"
+					value="#{rfidBean.rfid.manufacturer}"
+					converter="omnifaces.SelectItemsConverter" filter="true">
+					<f:selectItem noSelectionOption="true"
+						itemLabel="#{msg.selecionaFabricante}" />
+					<f:selectItems value="#{rfidBean.manufacturers}" var="manufacturerCur"
+						itemValue="#{manufacturerCur}" itemLabel="#{manufacturerCur.name}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="location" value="#{msg.cadastroCampoLocal}: " />
+				<p:selectOneMenu id="location" required="true"
+					requiredMessage="#{msg.validaCampoLocal}"
+					value="#{rfidBean.rfid.location}"
+					converter="omnifaces.SelectItemsConverter" filter="true">
+					<f:selectItem noSelectionOption="true"
+						itemLabel="#{msg.selecionaLocal}" />
+					<f:selectItems value="#{rfidBean.locationList}" var="locationCur"
+						itemValue="#{locationCur}" itemLabel="#{locationCur.name}" />
+				</p:selectOneMenu>
+
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton value="#{msg.botaoSalvar}"
+					actionListener="#{rfidBean.save}"
+					update=":message :formCadastro:panelInfos :formListagem:tabela" />
+				<p:commandButton value="#{msg.botaoFechar}"
+					onclick="PF('dialogo').hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<br />
+	<br />
+
+	<div>
+		<ui:include src="Footer.xhtml"></ui:include>
+	</div>
+</h:body>
+</html>

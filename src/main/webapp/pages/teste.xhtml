@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8"/>
+	<ui:include src="Header.xhtml"></ui:include>
+	<title>Lista de Usuários</title>
+</h:head>
+<h:body>
+	<div align="center">
+	<h:form>
+	<h1>Resultado</h1>
+	<h:dataTable value="#{userBean.users}" var="user" border="1">
+		<h:column>
+			<f:facet name="header">
+				Username
+			</f:facet>
+			#{user.userName}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Nome
+			</f:facet>
+			#{user.name}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Data de Aniversário
+			</f:facet>
+			#{user.birthDate}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Departamento
+			</f:facet>
+			#{user.department}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Matrícula Funcional
+			</f:facet>
+			#{user.functionalEnrollment}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Ações
+			</f:facet>
+			<h:commandLink action="#{userBean.deleteUser(user)}">
+				Excluir
+			</h:commandLink>
+		</h:column>
+	</h:dataTable>
+	<br/>
+	<br/>
+	<div align="center">
+	<p:commandLink value="Retornar a página principal" action="#{userBean.FlameAccessPage}"/>
+	</div>
+	</h:form>
+	</div>
+	<div>
+	<ui:include src="Footer.xhtml"></ui:include>
+	</div>
+</h:body>
+</html>

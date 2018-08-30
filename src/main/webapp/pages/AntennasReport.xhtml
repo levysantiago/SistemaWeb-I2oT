@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8"/>
+	<ui:include src="Header.xhtml"></ui:include>
+	<title>Lista de Antenas</title>
+</h:head>
+<h:body>
+	<div align="center">
+	<h:form update="@all">
+	<h:dataTable value="#{antennasBean.antennasList}" var="a" border="1">
+		<h:column>
+			<f:facet name="header">
+				Name
+			</f:facet>
+			<h:outputText value="#{a.name}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Number
+			</f:facet>
+			<h:outputText value="#{a.number}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Id_Level_1
+			</f:facet>
+			<h:outputText value="#{a.id_level_1}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Id_Rfid
+			</f:facet>
+			<h:outputText value="#{a.id_rfid}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Ações
+			</f:facet>
+			<h:commandLink action="#{antennasBean.deleteAntennas(antennas)}">
+				Excluir
+			</h:commandLink>
+		</h:column>
+	</h:dataTable>
+	<br/>
+	<br/>
+	<div align="center">
+	<p:commandLink value="Retornar a página principal" action="#{userBean.FlameAccessPage}"/>
+	</div>
+	</h:form>
+	</div>
+	<div>
+	<ui:include src="Footer.xhtml"></ui:include>
+	</div>
+</h:body>
+</html>

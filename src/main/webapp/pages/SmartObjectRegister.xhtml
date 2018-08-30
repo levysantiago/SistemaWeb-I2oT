@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title><h:outputText value="#{msg.tituloOI}" /></title>
+	<ui:include src="Header.xhtml"></ui:include>
+</h:head>
+<h:body>
+
+	<p:growl id="message" />
+
+	<h:form id="formListagem">
+		<p:panel header="#{msg.cabecalhoTabelaOI}">
+			<p:dataTable emptyMessage="#{msg.nenhumRegistro}" paginator="true"
+				rows="5" id="tabela" value="#{smartObjectBean.smartObjects}"
+				var="oiCur">
+
+				<f:facet name="header">
+					<p:commandButton value="#{msg.botaoNovo}"
+						onclick="PF('dialogo').show();"
+						actionListener="#{smartObjectBean.novo}"
+						update=":message :formCadastro:panelInfos">
+						<f:actionListener
+							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>
+				</f:facet>
+
+				<p:column headerText="#{msg.cadastroCampoDescricao}">
+					<h:outputText value="#{oiCur.description}" />
+				</p:column>
+
+				<p:column headerText="#{msg.cadastroCampoCategoria}">
+					<h:outputText value="#{oiCur.category}" />
+				</p:column>
+
+				<p:column headerText="#{msg.cadastroCampoLocal}">
+					<h:outputText value="#{oiCur.location.name}" />
+				</p:column>
+
+				<p:column headerText="#{msg.tabelaCampoOpcoes}">
+					<!-- Botão Excluir -->
+					<p:commandButton icon="ui-icon-trash"
+						actionListener="#{smartObjectBean.delete}"
+						update=":message :formListagem:tabela">
+						<p:confirm header="#{msg.confirmacao}" message="#{msg.certeza}"
+							icon="ui-icon-alert" />
+						<!-- Disparando um evento para obter o objeto da linha selecionada -->
+						<f:attribute name="smartObjectSelected" value="#{oiCur}" />
+					</p:commandButton>
+
+					<!-- Botão Editar -->
+					<p:commandButton icon="ui-icon-pencil"
+						onclick="PF('dialogo').show();"
+						actionListener="#{smartObjectBean.update}"
+						update=":message :formCadastro:panelInfos">
+						<f:attribute name="smartObjectSelected" value="#{oiCur}" />
+						<f:actionListener
+							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog global="true">
+				<p:commandButton value="#{msg.sim}" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="#{msg.nao}" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</p:panel>
+	</h:form>
+
+	<p:dialog header="#{msg.cabecalhoCadastroOI}" widgetVar="dialogo"
+		draggable="false" resizable="false" modal="true" closable="false">
+		<h:form id="formCadastro">
+			<h:panelGrid columns="2" id="panelInfos">
+				<p:outputLabel for="tag" value="#{msg.cadastroCampoTagRfid}: " />
+				<p:inputText id="tag" value="#{smartObjectBean.smartObject.tagRfid}"
+					maxlength="30" size="25" required="true"
+					requiredMessage="#{msg.validaCampoTagRfid}" />
+
+				<p:outputLabel for="descricao"
+					value="#{msg.cadastroCampoDescricao}: " />
+				<p:inputText id="descricao" maxlength="100" size="25"
+					required="true" requiredMessage="#{msg.validaCampoDescricao}"
+					value="#{smartObjectBean.smartObject.description}" />
+
+				<p:outputLabel for="categoria"
+					value="#{msg.cadastroCampoCategoria}: " />
+				<p:inputText id="categoria" maxlength="100" size="25"
+					required="true" requiredMessage="#{msg.validaCampoCategoria}"
+					value="#{smartObjectBean.smartObject.category}" />
+
+				<p:outputLabel for="modelo" value="#{msg.cadastroCampoModelo}: " />
+				<p:inputText id="modelo" maxlength="50" size="25" required="true"
+					requiredMessage="#{msg.validaCampoModelo}"
+					value="#{smartObjectBean.smartObject.model}" />
+
+				<p:outputLabel for="condicao" value="#{msg.cadastroCampoCondicao}: " />
+				<p:inputText id="condicao" maxlength="30" size="25"
+					value="#{smartObjectBean.smartObject.condition}" />
+
+				<p:outputLabel for="valAtual"
+					value="#{msg.cadastroCampoValorAtual}: " />
+				<p:inputText id="valAtual" maxlength="30" size="10"
+					value="#{smartObjectBean.smartObject.currentValue}" />
+
+				<p:outputLabel for="dataCompra"
+					value="#{msg.cadastroCampoDataCompra}: " />
+				<p:calendar id="dataCompra" required="true" requiredMessage="#{msg.validaCampoDataCompra}"
+					value="#{smartObjectBean.smartObject.purchaseDate}"/>
+
+				<p:outputLabel for="precoCompra"
+					value="#{msg.cadastroCampoPrecoCompra}: " />
+				<p:inputText id="precoCompra"
+					value="#{smartObjectBean.smartObject.purchasePrice}" />
+
+				<p:outputLabel for="consignor"
+					value="#{msg.cadastroCampoConsignatario}: " />
+				<p:selectOneMenu id="consignor"
+					value="#{smartObjectBean.smartObject.consignor}"
+					converter="omnifaces.SelectItemsConverter" filter="true"
+					required="false" requiredMessage="#{msg.validaCampoConsignatario}">
+					<f:selectItem noSelectionOption="true"
+						itemLabel="#{msg.selecionaConsignatario}" />
+					<f:selectItems value="#{smartObjectBean.consignors}"
+						var="consignorCur" itemValue="#{consignorCur}"
+						itemLabel="#{consignorCur.name}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="location" value="#{msg.cadastroCampoLocal}: " />
+				<p:selectOneMenu id="location" required="true"
+					requiredMessage="#{msg.validaCampoLocal}"
+					value="#{smartObjectBean.smartObject.location}"
+					converter="omnifaces.SelectItemsConverter" filter="true">
+					<f:selectItem noSelectionOption="true"
+						itemLabel="#{msg.selecionaLocal}" />
+					<f:selectItems value="#{smartObjectBean.locationList}"
+						var="locationCur" itemValue="#{locationCur}"
+						itemLabel="#{locationCur.name}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="user" value="#{msg.cadastroCampoUsuario}: " />
+				<p:selectOneMenu id="user" required="false"
+					requiredMessage="#{msg.validaCampoUsuario}"
+					value="#{smartObjectBean.smartObject.user}"
+					converter="omnifaces.SelectItemsConverter" filter="true">
+					<f:selectItem noSelectionOption="true"
+						itemLabel="#{msg.selecionaUsuario}" />
+					<f:selectItems value="#{smartObjectBean.users}" var="userCur"
+						itemValue="#{userCur}"
+						itemLabel="#{userCur.name} - #{userCur.CPF}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="manufacturer"
+					value="#{msg.cadastroCampoFabricante}: " />
+				<p:selectOneMenu id="manufacturer" required="false"
+					requiredMessage="#{msg.validaCampoFabricante}"
+					value="#{smartObjectBean.smartObject.manufacturer}"
+					converter="omnifaces.SelectItemsConverter" filter="true">
+					<f:selectItem noSelectionOption="true"
+						itemLabel="#{msg.selecionaFabricante}" />
+					<f:selectItems value="#{smartObjectBean.manufacturers}" var="manufacturerCur"
+						itemValue="#{manufacturerCur}"
+						itemLabel="#{manufacturerCur.name} - #{manufacturerCur.CNPJ}" />
+				</p:selectOneMenu>
+
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton value="#{msg.botaoSalvar}"
+					actionListener="#{smartObjectBean.save}"
+					update=":message :formCadastro:panelInfos :formListagem:tabela" />
+				<p:commandButton value="#{msg.botaoFechar}"
+					onclick="PF('dialogo').hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<br />
+	<br />
+
+	<div>
+		<ui:include src="Footer.xhtml"></ui:include>
+	</div>
+</h:body>
+</html>

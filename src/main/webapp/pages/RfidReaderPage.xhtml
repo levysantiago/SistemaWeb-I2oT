@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+	<meta charset="UTF-8" />
+
+	<title>I²oT</title>
+
+</h:head>
+<h:body>
+
+	<div align="center">
+		<h2>Leitor RFID</h2>
+		<h:form id="formTags">
+			<h:panelGrid columns="1" width="100%" style="text-align:center">
+				<h:inputTextarea id="iTextArea" cols="27"
+					value="#{rfidReaderPageBean.tags}"
+					style="overflow-y: scroll; height: 200px; resize:none"
+					autoResize="false" />
+
+				<h:commandButton id="saveBtn" value="#{msg.botaoEnviar}"
+					styleClass="ui-priority-primary"
+					actionListener="#{rfidReaderPageBean.verifyTags}"
+					update=":formListagemOIs:tableOIs" />
+
+			</h:panelGrid>
+		</h:form>
+	</div>
+	<br />
+	<br />
+
+	<h:form id="formListagemOIs">
+		<h:dataTable id="tableOIs" value="#{rfidReaderPageBean.smartObjects}"
+			var="smartObjectCur">
+
+			<f:facet name="header">
+				<h3>
+					<h:outputText value="#{msg.listagemOIs}" />
+				</h3>
+			</f:facet>
+
+			<h:column>
+				<div style="height: 10px"></div>
+				<b><h:outputText value="Objeto Inteligente: " /> <h:column
+						headerText="#{msg.cadastroCampoDescricao}">
+						<h:outputText value="#{smartObjectCur.description}" />
+					</h:column></b>
+			</h:column>
+
+			<h:column>
+				<h:outputText value="Modelo: " />
+				<h:column headerText="#{msg.cadastroCampoModelo}">
+					<h:outputText value="#{smartObjectCur.model}" />
+				</h:column>
+			</h:column>
+
+			<h:column>
+				<h:outputLabel value="Local: " />
+				<h:column headerText="#{msg.cadastroCampoLocal}">
+					<h:outputText value="#{smartObjectCur.location.name}" />
+				</h:column>
+			</h:column>
+			
+			<h:column>
+				<h:outputLabel value="Local Atual: " />
+				<h:column headerText="#{msg.cadastroCampoLocal}">
+					<h:outputText value="#{smartObjectCur.actualLocation.name}" />
+				</h:column>
+			</h:column>
+
+			<h:column>
+				<h:outputLabel value="TesteLocal: " />
+				<h:column headerText="testeLocal">
+					<h:outputText value="#{smartObjectCur.status.allowedPlace}" />
+				</h:column>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+
+	<br />
+	<br />
+	<br />
+	<div>
+		<a href="/I2oT/pages/Home.xhtml">Voltar</a>
+	</div>
+</h:body>
+</html>

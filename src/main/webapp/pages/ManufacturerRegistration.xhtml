@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+	<title><h:outputText value="#{msg.tituloFabricante}" /></title>
+	<ui:include src="Header.xhtml"></ui:include>
+</h:head>
+<h:body>
+
+	<p:growl id="message" />
+
+	<h:form id="formListagem">
+		<p:panel header="#{msg.cabecalhoTabelaFabricante}">
+			<p:dataTable emptyMessage="#{msg.nenhumRegistro}" paginator="true"
+				rows="5" id="tabela" value="#{manufacturerBean.manufacturers}"
+				var="manufacturerCur">
+
+				<f:facet name="header">
+					<p:commandButton value="#{msg.botaoNovo}"
+						onclick="PF('dialogo').show();"
+						actionListener="#{manufacturerBean.newObj}"
+						update=":message :formCadastro:panelInfos">
+						<f:actionListener
+							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>
+				</f:facet>
+
+				<p:column headerText="#{msg.cadastroCampoNome}"
+					filterBy="#{manufacturerCur.name}" sortBy="#{manufacturerCur.name}">
+					<h:outputText value="#{manufacturerCur.name}" />
+				</p:column>
+
+				<p:column headerText="#{msg.registryFieldCNPJ}"
+					filterBy="#{manufacturerCur.CNPJ}" sortBy="#{manufacturerCur.CNPJ}">
+					<h:outputText value="#{manufacturerCur.CNPJ}" />
+				</p:column>
+
+				<p:column headerText="#{msg.cadastroCampoCidade}"
+					filterBy="#{manufacturerCur.address.city.name}"
+					sortBy="#{manufacturerCur.address.city.name}">
+					<h:outputText
+						value="#{manufacturerCur.address.city.name} - #{manufacturerCur.address.city.state.abbreviation}" />
+				</p:column>
+
+				<p:column headerText="#{msg.tabelaCampoOpcoes}">
+					<!-- Botão Excluir -->
+					<p:commandButton icon="ui-icon-trash"
+						actionListener="#{manufacturerBean.delete}"
+						update=":message :formListagem:tabela">
+						<p:confirm header="#{msg.confirmacao}" message="#{msg.certeza}"
+							icon="ui-icon-alert" />
+						<!-- Disparando um evento para obter o objeto da linha selecionada -->
+						<f:attribute name="manufacturerSelected"
+							value="#{manufacturerCur}" />
+					</p:commandButton>
+
+					<!-- Botão Editar -->
+					<p:commandButton icon="ui-icon-pencil"
+						onclick="PF('dialogo').show();"
+						actionListener="#{manufacturerBean.update}"
+						update=":message :formCadastro:panelInfos">
+						<f:attribute name="manufacturerSelected"
+							value="#{manufacturerCur}" />
+						<f:actionListener
+							type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+			<p:confirmDialog global="true">
+				<p:commandButton value="#{msg.sim}" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="#{msg.nao}" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</p:panel>
+	</h:form>
+
+	<p:dialog header="#{msg.cabecalhoCadastroFabricante}"
+		widgetVar="dialogo" draggable="false" resizable="false" modal="true"
+		closable="false">
+		<h:form id="formCadastro">
+			<h:panelGrid columns="2" id="panelInfos">
+
+				<p:outputLabel for="nome" value="#{msg.cadastroCampoNome}: " />
+				<p:inputText id="nome" value="#{manufacturerBean.manufacturer.name}"
+					maxlength="50" size="15" required="true"
+					requiredMessage="#{msg.validaCampoNome}" />
+				
+				<p:outputLabel for="cnpj" value="#{msg.registryFieldCNPJ}: " />
+				<p:inputText id="cnpj" value="#{manufacturerBean.manufacturer.CNPJ}"
+					maxlength="20" size="20" required="true"
+					requiredMessage="#{msg.validateFieldCNPJ}" />
+
+				<p:outputLabel for="state" value="#{msg.cadastroCampoEstado}: " />
+				<p:selectOneMenu id="state"
+					value="#{manufacturerBean.state}"
+					converter="omnifaces.SelectItemsConverter" filter="true"
+					required="true" requiredMessage="#{msg.validaCampoEstado}">
+					<f:selectItem noSelectionOption="true"
+						itemLabel="#{msg.selecionaEstado}" />
+					<f:selectItems value="#{manufacturerBean.states}" var="stateCur"
+						itemValue="#{stateCur}"
+						itemLabel="#{stateCur.name}" />
+					<p:ajax listener="#{manufacturerBean.updateCities}"
+						update=":formCadastro:city" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="city" value="#{msg.cadastroCampoCidade}: " />
+				<p:selectOneMenu id="city"
+					value="#{manufacturerBean.address.city}"
+					converter="omnifaces.SelectItemsConverter" filter="true"
+					required="true" requiredMessage="#{msg.validaCampoCidade}">
+					<f:selectItem noSelectionOption="true"
+						itemLabel="#{msg.selecionaCidade}" />
+					<f:selectItems value="#{manufacturerBean.cities}" var="cityCur"
+						itemValue="#{cityCur}"
+						itemLabel="#{cityCur.name} - #{cityCur.state.abbreviation}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="neighborhood"
+					value="#{msg.registryFieldNeighborhood}: " />
+				<p:inputText id="neighborhood"
+					value="#{manufacturerBean.address.neighborhood}"
+					maxlength="100" size="20" required="true"
+					requiredMessage="#{msg.validateFieldNeighborhood}" />
+					
+				<p:outputLabel for="publicPlace"
+					value="#{msg.registryFieldPublicPlace}: " />
+				<p:inputText id="publicPlace"
+					value="#{manufacturerBean.address.publicPlace}"
+					maxlength="100" size="20" required="true"
+					requiredMessage="#{msg.validateFieldPublicPlace}" />
+					
+				<p:outputLabel for="number"
+					value="#{msg.cadastroCampoNumero}: " />
+				<p:inputText id="number"
+					value="#{manufacturerBean.address.number}"
+					maxlength="8" size="10" required="true"
+					requiredMessage="#{msg.validaCampoNumero}" />
+				
+				<p:outputLabel for="postalCode"
+					value="#{msg.registryFieldPostalCode}: " />
+				<p:inputText id="postalCode"
+					value="#{manufacturerBean.address.postalCode}"
+					maxlength="11" size="15" required="true"
+					requiredMessage="#{msg.validateFieldPostalCode}" />
+
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton value="#{msg.botaoSalvar}"
+					actionListener="#{manufacturerBean.save}"
+					update=":message :formCadastro:panelInfos :formListagem:tabela" />
+				<p:commandButton value="#{msg.botaoFechar}"
+					onclick="PF('dialogo').hide();" />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+	<br />
+	<br />
+
+	<div>
+		<ui:include src="Footer.xhtml"></ui:include>
+	</div>
+</h:body>
+</html>
