@@ -4,6 +4,7 @@ public class SmartObjectOntStatus {
 	private boolean allowedPlace;
 	private boolean allowedPerson;
 	private boolean allowedMaterial;
+	private boolean isMoving;
 	
 	public boolean isAllowedPlace() {
 		return allowedPlace;
@@ -22,5 +23,11 @@ public class SmartObjectOntStatus {
 	}
 	public void setAllowedMaterial(boolean allowedMaterial) {
 		this.allowedMaterial = allowedMaterial;
+	}
+	public boolean isMoving() {
+		return isMoving;
+	}
+	public void setMoving(boolean isMoving) {
+		this.isMoving = isMoving;
 	}
 }

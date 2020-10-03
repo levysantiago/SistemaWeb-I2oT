@@ -40,6 +40,25 @@ public class SmartObjectService {
 
 		return json;
 	}
+	
+	// Link: //http://localhost:8080/I2oT/rest/smartObject/idByTag/[rfidTag]
+	@GET
+	@Path("/idByTag/{rfidTag}")
+	public String searchByTag(@PathParam("rfidTag") String rfidTag) {
+		Gson gson = new Gson();
+		SmartObjectDAO smartObjectDAO = new SmartObjectDAO();
+		String json;
+		
+		try {
+			SmartObject smartObject = smartObjectDAO.searchBy(SmartObject.findByTag, "tagRfid", rfidTag);
+			json = gson.toJson(smartObject);
+			
+			return json;
+		}catch(Exception e) {
+			//Caso não esteja cadastrado
+			return "";
+		}
+	}
 
 	// Link: //http://localhost:8080/I2oT/rest/smartObject/byTag/[tag]
 	@GET

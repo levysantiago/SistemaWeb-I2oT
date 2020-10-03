@@ -17,7 +17,7 @@ public class OntologyManager {
      * The I2oTontology namespace used to reference the ontology components.
      */
     public static final String NAMESPACE_I2OTOLOGY = "http://www.semanticweb.org/I2oT/ontology#";
-    private static String filePath = "/home/levy/Documents/Protege-5.2.0/projects/i2otology.owl";
+    private static String filePath = "/home/levy/Protege-5.5.0/projects/i2otology.owl";
 
     private static InputStream inputStream = null;
     private static InputStreamReader inputStreamReader = null;

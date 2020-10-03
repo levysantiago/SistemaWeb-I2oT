@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="UTF-8" />
+
+	<title>I²oT</title>
+	<meta http-equiv="refresh" content="60;url=#"/>
+	
+	<link rel="stylesheet" type="text/css" href="css/objPageStyle.css"></link>
+
+</h:head>
+
+<h:body>
+	<p:growl id="message" />
+	
+	<header>
+		<h:form>
+			<p:menubar>
+		        <f:facet name="options">
+		            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+		        </f:facet>
+		    </p:menubar>
+	    </h:form>
+	</header>
+	
+	<div id="conteudo" class="page-content">
+		<div id="div-mensagens" class="datalist">
+			<p:dataList id="msgList" value="#{objectsPageBean.mensagens}" var="mg" type="definition">
+		        <f:facet name="header">
+		            Mensagens
+		        </f:facet>
+		        <div class="menu-messages">
+		        	<div class="menu-item-content">
+		        		<h:form id="formMensagem">
+		        			<p id="mensagens">#{mg.message}</p>
+		        		</h:form>
+		        	</div>
+		        </div>
+		    </p:dataList>
+	    </div>
+		
+		<div id="objInformation" class="datalist">
+			<p:dataList value="" var="" type="definition">
+		        <f:facet name="header">
+		            Objeto: #{objectsPageBean.smartObject.description}
+		        </f:facet>
+		        <div class="feed-box">
+		        	<div class="feed-content">
+			        		<div class="info-cel-1">
+		                       	<h:outputText class="info-cel-mean" value="Categoria:"/>
+		                        <h:outputText class="info-cel-content" value="#{objectsPageBean.smartObject.category}"/>
+	                        </div>
+	                       	
+	                       	<div class="info-cel-2">
+		                       	<h:outputText class="info-cel-mean" value="Local:" />
+		                        <h:outputText class="info-cel-content" value="#{objectsPageBean.locationName}"/>
+	 						</div>
+	 						
+	 						<div class="info-cel-1">
+		                        <h:outputText class="info-cel-mean" value="Movido por:" />
+		                        <h:outputText class="info-cel-content" value="#{objectsPageBean.smartObject.movedBySome}"/>
+		                    </div>
+	                        
+	                        <div class="info-cel-2">
+		                        <h:outputText class="info-cel-mean" value="Status1:" />
+		                        <h:outputText class="info-cel-content" value="#{objectsPageBean.status1}"/>
+		                    </div>
+	                        
+	                        <div class="info-cel-1">
+		                        <h:outputText class="info-cel-mean" value="Status2:" />
+		                        <h:outputText class="info-cel-content" value="#{objectsPageBean.status2}"/>
+		                    </div>
+	                        
+	                        <div class="info-cel-2">
+		                        <h:outputText class="info-cel-mean" value="Status3:" />
+		                        <h:outputText class="info-cel-content" value="#{objectsPageBean.status3}"/>
+		                    </div>
+	                    
+		        	</div>
+		        </div>
+		    </p:dataList>
+	    </div>
+	</div>
+ 	
+    <p:scrollPanel class="objects-menu">
+    	<h:form id="formObjMenu">
+	    	<p:dataList value="#{objectsPageBean.smartObjects}" var="oi" type="definition">
+		        <f:facet name="header">
+		            Objetos
+		        </f:facet>
+			    <div style="margin-bottom: 1px;" class="menu-item">
+			        <h:commandLink style="height: 7vh; width: 19vw;"
+		        				class="menu-item-content" update=":message" 
+		        				actionListener="#{objectsPageBean.update}">
+			        	#{oi.description}
+		        	<f:attribute name="smartObjectSelected" value="#{oi}" />
+	        		<f:actionListener
+						type="org.omnifaces.eventlistener.ResetInputAjaxActionListener" />
+		        	</h:commandLink>
+			    </div>
+		    </p:dataList>
+	    </h:form>
+	</p:scrollPanel>
+    
+	
+	
+	
+</h:body>
+</html>

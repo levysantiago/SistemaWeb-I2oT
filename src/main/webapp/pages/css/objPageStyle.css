@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+.datalist{
+	margin-bottom: 20px;
+	width: 95%;
+}
+
+.page-content{
+	display: inline-block;
+	width: 75%;
+	padding: 2%;
+}
+
+.feed-box{
+	background-color: #d1d7f3;
+	width: 99%;
+	height: 190px;
+	padding: 5px;
+}
+
+.feed-content{
+	font-size: 20px;
+}
+
+.info-cel-1{
+	width: 99%;
+	height: 20px;
+	padding: 5px;
+	margin-bottom: 1px;
+}
+
+.info-cel-2{
+	background-color: #f3f3f3;
+	width: 99%;
+	height: 20px;
+	padding: 5px;
+}
+
+.info-cel-mean{
+	width: 150px;
+	display: inline-block;
+}
+
+.info-cel-content{
+	width: 50px;
+}
+
+.objects-menu{
+	display: inline-block;
+	float: right;
+	width:20%;
+	height:100vh;
+}
+
+.menu-item-content{
+    display:table-cell;
+    text-decoration: none;
+}
+
+.menu-item{
+	background-color: #d1d7f3;
+	width: 99%;
+	height: 50px;
+	cursor: pointer;
+	padding: 5px;
+}
+
+.menu-messages{
+	background-color: #d1d7f3;
+	width: 99%;
+	height: 50px;
+	padding: 5px;
+}
+
+.menu-item:hover {
+	background-color: #eaefef;
+}
+
+.menu-item-content:active {
+	text-decoration: none;
+}

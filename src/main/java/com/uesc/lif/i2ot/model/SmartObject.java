@@ -30,6 +30,9 @@ public class SmartObject extends Generic implements Serializable {
 	private SmartObjectOntStatus status;
 	
 	@Transient
+	private String movedBySome;
+	
+	@Transient
 	private SmartObjectOntProperties properties;
 	
 	@Column(nullable = false, length = 30)
@@ -82,6 +85,14 @@ public class SmartObject extends Generic implements Serializable {
 	
 	public void setStatus(SmartObjectOntStatus status) {
 		this.status = status;
+	}
+
+	public String getMovedBySome() {
+		return movedBySome;
+	}
+
+	public void setMovedBySome(String movedBySome) {
+		this.movedBySome = movedBySome;
 	}
 
 	public String getTagRfid() {

@@ -51,6 +51,7 @@
 		<mapping class="com.uesc.lif.i2ot.model.City"/>
 		<mapping class="com.uesc.lif.i2ot.model.Person"/>
 		<mapping class="com.uesc.lif.i2ot.model.Address"/>
+		<mapping class="com.uesc.lif.i2ot.model.Message"/>
 
 	</session-factory>
 

@@ -13,6 +13,7 @@ import org.apache.jena.ontology.SomeValuesFromRestriction;
 import org.apache.jena.rdf.model.Literal;
 import org.apache.jena.rdf.model.Property;
 import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.util.iterator.ExtendedIterator;
 
 import com.uesc.lif.i2ot.util.OntologyManager;
 
@@ -115,6 +116,24 @@ public class SmartObjectOntDAO {
             return null;
         }
     }
+	
+	private Individual getIndividual(String name){
+        try{
+            return ontModel.getIndividual(OntologyManager.getNamespaceI2otology() + name);
+        }catch(Exception e){
+            return null;
+        }
+    }
+	
+	public boolean isMoving(Long smartObjID) {
+		Individual individual = getIndividual(smartObjID);
+		try {
+			return individual.hasProperty( ontModel.getProperty(OntologyManager.getNamespaceI2otology() + "isMovedBy") );
+		}catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
     
     public boolean setType(Individual individual, String type){
         if(OntologyManager.getInputStream() != null && OntologyManager.getInputStreamReader() != null){
@@ -165,6 +184,16 @@ public class SmartObjectOntDAO {
     public boolean existsIndividual(Long smartObjID) {
     	try {    		
     		Individual individual = this.getIndividual(smartObjID);
+    		individual.getLocalName();
+    		return true;
+    	}catch(Exception e) {
+    		return false;
+    	}
+    }
+    
+    public boolean existsIndividual(String name) {
+    	try {    		
+    		Individual individual = this.getIndividual(name);
     		individual.getLocalName();
     		return true;
     	}catch(Exception e) {
@@ -230,6 +259,38 @@ public class SmartObjectOntDAO {
         }
         
         return rightPlace;
+    }
+    
+    public String getIndividualFather(String name) {
+    	try {
+    		Individual individual = getIndividual(name);
+    		ExtendedIterator<OntClass> fathersList = individual.listOntClasses(true);
+    		while(fathersList.hasNext()) {
+    			String fatherName = fathersList.next().getLocalName();
+    			if(!fatherName.equals("NamedIndividual")) {
+    				return fatherName;
+    			}
+    		}
+    		
+    		return "";
+    	}catch(Exception e){
+            e.printStackTrace();
+            return "";
+        }
+    }
+    
+    public String movedBySome(Long smartObjectID) {
+    	try {
+    		Individual so = this.getIndividual(smartObjectID);
+    		Property prop = ontModel.getProperty(OntologyManager.getNamespaceI2otology() + "isMovedBy");
+    		Resource person = so.getPropertyResourceValue(prop);
+    		String personType = getIndividualFather(person.getLocalName());
+    		
+    		return personType;
+    	}catch(Exception e) {
+    		e.printStackTrace();
+            return "";
+    	}
     }
     
     /**

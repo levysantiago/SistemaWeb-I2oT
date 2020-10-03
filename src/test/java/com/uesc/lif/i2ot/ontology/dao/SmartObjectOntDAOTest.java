@@ -1,11 +1,17 @@
 package com.uesc.lif.i2ot.ontology.dao;
 
+import org.apache.jena.ontology.Individual;
+import org.apache.jena.ontology.OntClass;
+import org.apache.jena.ontology.OntModel;
+import org.apache.jena.util.iterator.ExtendedIterator;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.uesc.lif.i2ot.util.OntologyManager;
+
 public class SmartObjectOntDAOTest {
 	@Test
-	//@Ignore
+	@Ignore
 	public void allowed() {
 		SmartObjectOntDAO smartObjectOntDAO = new SmartObjectOntDAO();
 		
@@ -42,6 +48,45 @@ public class SmartObjectOntDAOTest {
 			System.out.println("Objeto não encontrado.");
 		}
 		System.out.println(smartObjectOntDAO.commitChanges());
+	}
+	
+	@Test
+	@Ignore
+	public void getIndividualFather() {
+		SmartObjectOntDAO dao = new SmartObjectOntDAO();
+		dao.beginTransaction();
+		String father = dao.getIndividualFather("stud1");
+		System.out.println(father);
+		dao.endTransaction();
+	}
+	
+	@Test
+	@Ignore
+	public void movedBySome() {
+		SmartObjectOntDAO dao = new SmartObjectOntDAO();
+		dao.beginTransaction();
+		String mv = dao.movedBySome(1l);
+		System.out.println(mv);
+		dao.endTransaction();
+	}
+	
+	@Test
+	public void individualFather() {
+		SmartObjectOntDAO dao = new SmartObjectOntDAO();
+		
+		dao.beginTransaction();
+		
+		/*Individual i = dao.getIndividual("func1");
+		ExtendedIterator<OntClass> l = i.listOntClasses(true);
+		while(l.hasNext()) {
+			String name = l.next().getLocalName();
+			if(!name.equals("NamedIndividual")) {
+				System.out.println(name);
+				break;
+			}
+			
+		}*/
+		dao.endTransaction();
 	}
 	
 	/*PRÓXIMOS PASSOS:

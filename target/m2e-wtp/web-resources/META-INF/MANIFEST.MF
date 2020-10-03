@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Built-By: root
-Build-Jdk: 9-Debian
+Built-By: levy
+Build-Jdk: 1.8.0_265
 Created-By: Maven Integration for Eclipse
 
