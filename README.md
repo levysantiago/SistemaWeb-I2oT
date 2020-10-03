@@ -87,6 +87,16 @@ After configuring the file, it should be like this:
 <property name="connection.password">123</property>
 ```
 
+#### Configuring the ontology path
+
+Inside the file `SistemaWeb-I2oT/src/main/java/com/uesc/lif/i2ot/util/OntologyManager.java` you will see the following code lines:
+
+<div align="center">
+    <img src="https://i.imgur.com/1vOs2PJ.png" alt="Image"/>
+</div>
+
+Here you will update the **filePath** variable to the right path of the ontology. The ontology is located in `SistemaWeb-I2oT/src/main/java/ontology/i2otology.owl`, so you can just change the fist part of the string `"home/levy/eclipse-workspace/"` and put your path.
+
 #### Configuring the Apache Tomcat
 
 [This video](https://www.youtube.com/watch?v=aJ7kdjzIVcw&list=PL_GwGUsBlNyfI0W3ggfffhBdJUqB4981Z&index=32&ab_channel=S%C3%A9rgioRobertoDelfino) explains all the proccess of downloading and configuring the Tomcat inside the Eclipse, but I will explain breafly here too. In this project I used the Tomcat version 8.0.53.
