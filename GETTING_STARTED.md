@@ -7,6 +7,14 @@ In this section I will introduce the minimum configuration you need to do to run
 - Java 8
 - Tomcat 8.0.53
 
+## Downloading project
+
+You can download the project as a .zip file or by using the command line:
+
+```
+$ git clone https://github.com/Levysantiago/SistemaWeb-I2oT
+```
+
 ## Installing Java
 
 `If you already have the Java JDK version 8, you can skip this section.`
