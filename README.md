@@ -8,16 +8,13 @@ To understand more about the project, there are some articles and reports you ca
 
 **Articles**
 
-- [I²oTegrator: a Service-Oriented IoT Middleware for Intelligent Object Management](https://ieeexplore.ieee.org/document/8538541)
+- [I²oTegrator: a Service-Oriented IoT Middleware for Intelligent Object Management](https://ieeexplore.ieee.org/document/8538541) (English)
 
-  - English
-
-- [I²oTology - Tracking-Oriented Ontology](http://ceur-ws.org/Vol-2228/short5.pdf)
-  - English
+- [I²oTology - Tracking-Oriented Ontology](http://ceur-ws.org/Vol-2228/short5.pdf) (English)
 
 **Reports**
 
-- [InventoryIoT (I2oT): uma plataforma de gerenciamento automatizado de inventário](https://drive.google.com/file/d/152A3dqGNh61SnI3yNWC_NEChE7sum07i/view?usp=sharing)
+- [InventoryIoT (I2oT): uma plataforma de gerenciamento automatizado de inventário](https://drive.google.com/file/d/152A3dqGNh61SnI3yNWC_NEChE7sum07i/view?usp=sharing) (Portuguese)
 
 ## Getting Started
 
