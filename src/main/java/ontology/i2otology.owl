@@ -1,0 +1,513 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:qu="http://purl.org/NET/ssnx/qu/qu#"
+    xmlns:iot-lite="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#"
+    xmlns:time="http://www.w3.org/2006/time#"
+    xmlns="http://www.semanticweb.org/owl/owlapi/turtle#"
+    xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:ssn="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:ontology="http://www.semanticweb.org/I2oT/ontology#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://www.semanticweb.org/I2oT/ontology#"/>
+  <owl:Class rdf:about="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#System"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Dangerous">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Material"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Service">
+    <rdfs:comment xml:lang="en">Service provided by an IoT Device</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#RfidSensor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#SensingDevice"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Metadata">
+    <rdfs:comment xml:lang="en">Class used to describe properties that cannot be described by QuantityKind and Units. i.e. the resolution of a sensor.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Rectangle">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Coverage"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Teh coverage is made up by giving two points which are the oposite corners of a rentangle.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Antenna">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#RfidSensorCharacteristic"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#AllowedPerson">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#canBeMovedBy"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Functionary"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#isMovedBy"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Functionary"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#canBeMovedBy"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Student"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#isMovedBy"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Student"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#canBeMovedBy"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Teacher"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#isMovedBy"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Teacher"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Person"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Sensor"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#ClassRoom">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Place"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.org/NET/ssnx/qu/qu#QuantityKind"/>
+  <owl:Class rdf:about="http://purl.org/NET/ssnx/qu/qu#Unit"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Institution"/>
+  <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Circle">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Coverage"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="en">Circle coverage it needs the location of the sensor as the centre of the circle and the radius as a DataProperty.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#InfraredSensor">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#SensingDevice"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Coverage">
+    <rdfs:comment xml:lang="en">The coverage of an IoT device (i.e. a temperature sensor inside a room has a coverage of that room).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Functionary">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Person"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#AllowedMaterial">
+    <owl:equivalentClass>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#ofMaterial"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Simple"/>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/I2oT/ontology#Material"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Place">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/I2oT/ontology#Institution"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#ActuatingDevice">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:comment xml:lang="en">Device that can actuate over an object or QuantityKind.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Polygon">
+    <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Coverage"/>
+    <rdfs:comment xml:lang="en">The coverage is made up by linking several points by strait lines.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Attribute">
+    <rdfs:comment xml:lang="en">An attribute of an IoT object that can be exposed by an IoT service (i.e. a room (IoT Object) has a temperature (Attribute), that can be exposed by a temperature sensor (IoT device).</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Teacher">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Person"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#AllowedPlace">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#canBeIn"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#ClassRoom"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#hasLocation"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#ClassRoom"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#canBeIn"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Laboratory"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#hasLocation"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Laboratory"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/I2oT/ontology#Place"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#TagDevice">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:comment xml:lang="en">Tag Device such as QR code or bar code.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#SensingDevice">
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:subClassOf rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Sensor"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Person">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/I2oT/ontology#Institution"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#TurnOnRfidSensor">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/I2oT/ontology#InfraredSensor"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Laboratory">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/I2oT/ontology#Place"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Simple">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/I2oT/ontology#Material"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.semanticweb.org/I2oT/ontology#Student">
+    <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/I2oT/ontology#Person"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#Point">
+    <iot-lite:RelativeLocation></iot-lite:RelativeLocation>
+    <iot-lite:altRelative></iot-lite:altRelative>
+    <geo:alt></geo:alt>
+    <geo:lat></geo:lat>
+    <geo:long></geo:long>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#hasObject">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/I2oT/ontology#Place"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasSensingDevice">
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Sensor"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#SensingDevice"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#hasSubsystem">
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#System"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#System"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#hasAntenna">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/I2oT/ontology#RfidSensor"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/I2oT/ontology#Antenna"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#hasLocation">
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/I2oT/ontology#hasObject"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/I2oT/ontology#Place"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#exposedBy">
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:range rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Service"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasQuantityKind">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Attribute"/>
+          <owl:Class rdf:about="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Sensor"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://purl.org/NET/ssnx/qu/qu#QuantityKind"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#canBeMovedBy">
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/I2oT/ontology#Person"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasPoint">
+    <rdfs:domain rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Coverage"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/I2oT/ontology#Place"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasUnit">
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Sensor"/>
+    <rdfs:range rdf:resource="http://purl.org/NET/ssnx/qu/qu#Unit"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasCoverage">
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:range rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Coverage"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#isMoving">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/I2oT/ontology#Person"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#canBeIn">
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/I2oT/ontology#Place"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#controls">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/I2oT/ontology#InfraredSensor"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/I2oT/ontology#RfidSensor"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#ofMaterial">
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/I2oT/ontology#Material"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasMetadata">
+    <rdfs:range rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Metadata"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#hasAttribute">
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:range rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Attribute"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#isMovedBy">
+    <owl:inverseOf rdf:resource="http://www.semanticweb.org/I2oT/ontology#isMoving"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/I2oT/ontology#Person"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#radius">
+    <rdfs:domain rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Circle"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#description">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#rfidTag">
+    <rdfs:domain rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#TagDevice"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#value"/>
+  <owl:DatatypeProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#type">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#endpoint">
+    <rdfs:domain rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Service"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/I2oT/ontology#objectName">
+    <rdfs:domain rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#TagDevice"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#id">
+    <rdfs:domain rdf:resource="http://www.w3.org/2005/Incubator/ssn/ssnx/ssn#Device"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#5">
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeIn"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#ClassRoom"/>
+      </owl:Restriction>
+    </rdf:type>
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeMovedBy"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#Functionary"/>
+      </owl:Restriction>
+    </rdf:type>
+    <ontology:ofMaterial>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#ferro">
+        <rdf:type rdf:resource="http://www.semanticweb.org/I2oT/ontology#Simple"/>
+      </owl:NamedIndividual>
+    </ontology:ofMaterial>
+    <ontology:isMovedBy>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#func1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/I2oT/ontology#Functionary"/>
+      </owl:NamedIndividual>
+    </ontology:isMovedBy>
+    <ontology:hasLocation>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#Sala18_2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/I2oT/ontology#ClassRoom"/>
+      </owl:NamedIndividual>
+    </ontology:hasLocation>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#obj1">
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeIn"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#Laboratory"/>
+      </owl:Restriction>
+    </rdf:type>
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeMovedBy"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#Functionary"/>
+      </owl:Restriction>
+    </rdf:type>
+    <ontology:hasLocation>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#room1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/I2oT/ontology#Laboratory"/>
+      </owl:NamedIndividual>
+    </ontology:hasLocation>
+    <ontology:isMovedBy>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#stud1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/I2oT/ontology#Student"/>
+      </owl:NamedIndividual>
+    </ontology:isMovedBy>
+    <ontology:rfidTag>13f32dwd</ontology:rfidTag>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#long">
+    <rdfs:domain rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+  </owl:AnnotationProperty>
+  <rdf:Description rdf:about="http://www.semanticweb.org/I2oT/ontology#1">
+    <ontology:hasLocation>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#SalaLIF_1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/I2oT/ontology#Laboratory"/>
+      </owl:NamedIndividual>
+    </ontology:hasLocation>
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeIn"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#Laboratory"/>
+      </owl:Restriction>
+    </rdf:type>
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeMovedBy"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#Functionary"/>
+      </owl:Restriction>
+    </rdf:type>
+    <ontology:isMovedBy rdf:resource="http://www.semanticweb.org/I2oT/ontology#func1"/>
+    <ontology:ofMaterial>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#plastic">
+        <rdf:type rdf:resource="http://www.semanticweb.org/I2oT/ontology#Simple"/>
+      </owl:NamedIndividual>
+    </ontology:ofMaterial>
+    <ontology:objectName>Notebook ASUS</ontology:objectName>
+    <ontology:rfidTag>2D6047D5</ontology:rfidTag>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#alt">
+    <rdfs:domain rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+  </owl:AnnotationProperty>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#2">
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeIn"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#Laboratory"/>
+      </owl:Restriction>
+    </rdf:type>
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeMovedBy"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#Functionary"/>
+      </owl:Restriction>
+    </rdf:type>
+    <ontology:rfidTag>B6794A54</ontology:rfidTag>
+    <ontology:isMovedBy rdf:resource="http://www.semanticweb.org/I2oT/ontology#func1"/>
+    <ontology:ofMaterial rdf:resource="http://www.semanticweb.org/I2oT/ontology#plastic"/>
+    <ontology:objectName>Monitor Samsung</ontology:objectName>
+    <ontology:hasLocation rdf:resource="http://www.semanticweb.org/I2oT/ontology#SalaLIF_1"/>
+  </owl:NamedIndividual>
+  <rdf:Description rdf:about="http://www.semanticweb.org/I2oT/ontology#3">
+    <ontology:hasLocation rdf:resource="http://www.semanticweb.org/I2oT/ontology#Sala18_2"/>
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeIn"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#Laboratory"/>
+      </owl:Restriction>
+    </rdf:type>
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeMovedBy"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#Functionary"/>
+      </owl:Restriction>
+    </rdf:type>
+    <ontology:ofMaterial>
+      <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#madeira">
+        <rdf:type rdf:resource="http://www.semanticweb.org/I2oT/ontology#Simple"/>
+      </owl:NamedIndividual>
+    </ontology:ofMaterial>
+    <ontology:isMovedBy rdf:resource="http://www.semanticweb.org/I2oT/ontology#func1"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </rdf:Description>
+  <owl:NamedIndividual rdf:about="http://www.semanticweb.org/I2oT/ontology#4">
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeIn"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#ClassRoom"/>
+      </owl:Restriction>
+    </rdf:type>
+    <rdf:type>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="http://www.semanticweb.org/I2oT/ontology#canBeMovedBy"/>
+        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/I2oT/ontology#Functionary"/>
+      </owl:Restriction>
+    </rdf:type>
+    <ontology:ofMaterial rdf:resource="http://www.semanticweb.org/I2oT/ontology#ferro"/>
+    <ontology:isMovedBy rdf:resource="http://www.semanticweb.org/I2oT/ontology#func1"/>
+    <ontology:hasLocation rdf:resource="http://www.semanticweb.org/I2oT/ontology#Sala18_2"/>
+  </owl:NamedIndividual>
+  <owl:AnnotationProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#altRelative">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#lat">
+    <rdfs:domain rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+  </owl:AnnotationProperty>
+  <owl:AnnotationProperty rdf:about="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#RelativeLocation">
+    <rdfs:domain rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+  </owl:AnnotationProperty>
+</rdf:RDF>

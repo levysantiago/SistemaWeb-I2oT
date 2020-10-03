@@ -1,11 +1,14 @@
 package com.uesc.lif.i2ot.util;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
@@ -17,7 +20,11 @@ public class OntologyManager {
      * The I2oTontology namespace used to reference the ontology components.
      */
     public static final String NAMESPACE_I2OTOLOGY = "http://www.semanticweb.org/I2oT/ontology#";
-    private static String filePath = "/home/levy/Protege-5.5.0/projects/i2otology.owl";
+    static Path currentRelativePath = Paths.get("");
+    static String s = currentRelativePath.toAbsolutePath().toString();
+    private static String filePath = s + "/../../../eclipse-workspace/I2oT/src/main/java/ontology/i2otology.owl";
+    
+    //private static String filePath = "/home/levy/Protege-5.5.0/projects/i2otology.owl";
 
     private static InputStream inputStream = null;
     private static InputStreamReader inputStreamReader = null;
