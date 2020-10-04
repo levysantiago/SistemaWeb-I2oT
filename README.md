@@ -102,10 +102,10 @@ In the right side of the image you see the list of objects registered in the MyS
 
 ### Flows
 
-- Page updating
+- **Page updating:**
   Every 60 seconds that the page updates, the **Controller** verifies the **Ontology Service** through the route `http://localhost:8080/I2oT/rest/smartObjectOntology/status/[smartObjects]` passing the actual list of objects. So the ontology service will verify the ontology (i2otology.owl) through the Ontology DAO layer using the reasoner option of the Jena framework. So the response will be a list of messages, if the list is empty that means that there is no warning, so the "Mensagens" component will be empty.
 
-- Smart Object clicking
+- **Smart Object clicking:**
   When clicking on a smart object listed, the **Controller** will consult some information to the database through the **Service** layer (route: `http://localhost:8080/I2oT/rest/smartObject/{id}`) , and after that will send this object to the **Ontology Service** layer (route: `http://localhost:8080/I2oT/rest/smartObjectOntology/info/{smartObject}`) requesting an ontology analysis of this object. The return will be all the object status, showing who moved this object, where it is right now, if this person is allowed to carry this object, if the object can be in this location and if the object material is not dangerous. So the **Controller** after having the information ready, delivers to the **View**.
 
 ## Getting Started
