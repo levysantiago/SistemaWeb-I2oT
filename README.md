@@ -40,6 +40,8 @@ Currently I'm improving the documentation of this project to help others to unde
 | **Write a Contributing readme**            | Write about how someone can contribute to this project using this repository.                          | :hourglass_flowing_sand: |          |
 | **List all the service routes**            | List the routes created in the servers showing the HTTP method and what is used for.                   | :hourglass_flowing_sand: |          |
 | **Improve the code documentation/javadoc** | Improve the documentation of all the code.                                                             | :hourglass_flowing_sand: |          |
+| **Push the arduino code**                  | Push the arduino code to the GitHub                                                                    | :hourglass_flowing_sand: |          |
+| **Write about the hardware**               | Write about the hardware used in this prototype to represent the smart objects.                        | :hourglass_flowing_sand: |          |
 
 ## Project Architecture
 
@@ -88,7 +90,23 @@ Here I will explain each layer briefly:
 
 ## The project
 
-In this section I'll show the project working locally. Well, as said in the beginning
+In this section I'll show the project working locally. Well, as said in the beginning of this readme, this project is a prototype so is not a complete project which has all the webpages created and working. Another things is that the project was built using the portuguese language, so most of the terms and messages are in portuguese.
+
+The main page I worked to validate this project and to publish about this proposal is the Smart Objects page, where was built thinking in as a social network page. So this is the visual:
+
+<div align="center">
+    <img src="https://i.imgur.com/iIGFHHp.png" alt="Image"/>
+</div>
+
+In the right side of the image you see the list of objects registered in the MySQL database. In the left side we have the "Mensagens" (Messages) that is where the user will see some warning about the objects coming from the system that consulted the ontology using the reasoner. And the other component "Objeto" (Object) shows the smart object information when we click in one of the objects in the list. The page is updated every 60 seconds in order to verify constantly if there is some warning.
+
+### Flows
+
+- Page updating
+  Every 60 seconds that the page updates, the **Controller** verifies the **Ontology Service** through the route `http://localhost:8080/I2oT/rest/smartObjectOntology/status/[smartObjects]` passing the actual list of objects. So the ontology service will verify the ontology (i2otology.owl) through the Ontology DAO layer using the reasoner option of the Jena framework. So the response will be a list of messages, if the list is empty that means that there is no warning, so the "Mensagens" component will be empty.
+
+- Smart Object clicking
+  When clicking on a smart object listed, the **Controller** will consult some information to the database through the **Service** layer (route: `http://localhost:8080/I2oT/rest/smartObject/{id}`) , and after that will send this object to the **Ontology Service** layer (route: `http://localhost:8080/I2oT/rest/smartObjectOntology/info/{smartObject}`) requesting an ontology analysis of this object. The return will be all the object status, showing who moved this object, where it is right now, if this person is allowed to carry this object, if the object can be in this location and if the object material is not dangerous. So the **Controller** after having the information ready, delivers to the **View**.
 
 ## Getting Started
 
