@@ -35,39 +35,39 @@ Basically the system architecture diagram flows like this:
 
 Here I will explain each layer breafly:
 
-- Model
+- **Model:**
   The model is the definition of the objects that will be persisted to the database and also used by the system as a normal object manipulation. In this layer I created a Generic Model where were created all the common caracteristics that all objects will have (e.g. ID and some set and get functions), and all the other models inherit from this Generic Model these characteristics, so that we can access the inherited caracteristics and also create others that are specific for this object/model.
 
-- Database
+- **Database:**
   The database I used for this this project is the MySQL, but it could be anyone, it was a choice based in the popularity and the highly use of this database by enterprises. To manage the database, the MySQL Workbench was used, To understand more about configuration, see the [Getting Started page](https://github.com/Levysantiago/SistemaWeb-I2oT/blob/master/GETTING_STARTED.md).
 
-- DAO
+- **DAO:**
   The DAO (Data Access Object) is a pattern for data persistence. This pattern allow us to uncouple the application from the data persistence layer. It's also good for code management, since a layer does not "disturb" the other when trying to update a code from a layer. This pattern allows us to configure the rules to persist a model to the database. Similar to the Model Layer, I created a GenericDAO which holds all the rules that are common to all the other DAOs that I created, so all of them will inherit from this GenericDAO and eventually can also implements specific rules.
 
-- Service
+- **Service:**
   The service is a layer created in order to uncouple the application to the database and server responsibilities, so that the layers could be divided and configured in different hosts. The service uses the Model and the DAO layers to create routes that can be triggered through RESTful HTTP requests.
 
-- Controller
+- **Controller:**
   The controller layer in this case is used to call the Service routes and then update the view when requested by it. It needs to use the Model to "understand" how to interact with the objects returned by the services. It also connects to the Ontology Service and Ontology Model that will work similarly to the Service and Model layers.
 
   `OBS: In some framewors the concept of the Controller changes. Some of them abstracts the Service layer and uses the Controller as the routes definer. So in this case the Controller offer the RESTful routes and the View layer interact with the Controller through the RESTful API. For example, in javascript you can use the Adonis.js as the server to offer the Service through the Controller layer, and use the React.js to construct the View layer and the Axios.js to make requests to the Adonis server.`
 
-- View
+- **View:**
   The view is the frontend HTML tags that will communicate with the Controller to get the updated data received by the requests to the services. The view pages are located at SistemaWeb-I2oT/src/main/webapp/pages. When you run the Tomcat server, it will serve the services and also the view pages, and you are able to access the routes through some RESTful API caller (as [Insomnia](https://insomnia.rest/)) to make GETs and POSTs HTML requests and use the browser to access the pages.
 
-- Ontology Model
-  It's similar to the Model layer, the difference is that we define the caracteristics thinking about the Ontology and not the Database, because of that, these models cannot inherits from the GenericModel once the Ontology model caracteristics are different from the Database model caracteristics.
-
-- Ontology
+- **Ontology:**
   The ontology is where some objects are configured and classified in order to infer new information about them and return to the system which will execute some decision. This ontology is an extension of the [IoT-Lite](https://www.w3.org/Submission/iot-lite/), a light ontology for IoT devices, we took this ontology and created some more classes that we needed to use within this project. The ontology is located in SistemaWeb-I2oT/src/main/java/ontology/i2otology.owl.
 
-- [Jena Library](https://jena.apache.org/)
+- **Ontology Model:**
+  It's similar to the Model layer, the difference is that we define the caracteristics thinking about the Ontology and not the Database, because of that, these models cannot inherits from the GenericModel once the Ontology model caracteristics are different from the Database model caracteristics.
+
+- **[Jena Library:](https://jena.apache.org/)**
   Is the library created by the Apache used to communicate with the Ontology file. [Here](https://jena.apache.org/getting_started/index.html) you can see more information about the documentation. This library also offers some methods where we can activate the reasoner and make some inferences inside the ontology.
 
-- Ontology DAO
+- **Ontology DAO:**
   It's similar to the DAO layer, but it will not use the database to persist the data, it will use the library Jena to communicate with the ontology file (i2otology.owl).
 
-- Ontology Service
+- **Ontology Service:**
   Similar to the Service, but will serve the ontology routes using the Ontology DAO layer and the Ontology Model layer.
 
 ## Getting Started
