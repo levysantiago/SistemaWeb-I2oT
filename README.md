@@ -108,6 +108,10 @@ In the right side of the image you see the list of objects registered in the MyS
 - **Smart Object clicking:**
   When clicking on a smart object listed, the **Controller** will consult some information to the database through the **Service** layer (route: `http://localhost:8080/I2oT/rest/smartObject/{id}`) , and after that will send this object to the **Ontology Service** layer (route: `http://localhost:8080/I2oT/rest/smartObjectOntology/info/{smartObject}`) requesting an ontology analysis of this object. The return will be all the object status, showing who moved this object, where it is right now, if this person is allowed to carry this object, if the object can be in this location and if the object material is not dangerous. So the **Controller** after having the information ready, delivers to the **View**.
 
+<div align="center">
+    <img src="https://i.imgur.com/Gfucb9K.gif" alt="Image"/>
+</div>
+
 ## Getting Started
 
 Go to the [Getting Started page](https://github.com/Levysantiago/SistemaWeb-I2oT/blob/master/GETTING_STARTED.md)
