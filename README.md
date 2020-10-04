@@ -35,11 +35,11 @@ Currently I'm improving the documentation of this project to help others to unde
 | **Write Getting Started**                  | Write a getting started readme with the configuration needed to run the project locally.               | :heavy_check_mark:       | 10/03/20 |
 | **Write Architecture readme**              | Write about the architecture/layers I used in this project.                                            | :heavy_check_mark:       | 10/04/20 |
 | **Write a table of tasks**                 | Write about all tasks I have done and what must be done to continue improve the project documentation. | :heavy_check_mark:       | 10/04/20 |
-| **Write a project overview**               | Write about how the project should work, what are the pages, what is done until now.                   | :hourglass_flowing_sand: |          |
+| **Write a project overview**               | Write about how the project should work, what are the pages, what is done until now.                   | :hourglass_flowing_sand: | 10/04/20 |
+| **Improve the code documentation/javadoc** | Improve the documentation of all the code.                                                             | :hourglass_flowing_sand: |          |
 | **Write Ontology readme**                  | Write a readme about the ontology and how to get started using the Protégé.                            | :hourglass_flowing_sand: |          |
 | **Write a Contributing readme**            | Write about how someone can contribute to this project using this repository.                          | :hourglass_flowing_sand: |          |
 | **List all the service routes**            | List the routes created in the servers showing the HTTP method and what is used for.                   | :hourglass_flowing_sand: |          |
-| **Improve the code documentation/javadoc** | Improve the documentation of all the code.                                                             | :hourglass_flowing_sand: |          |
 | **Push the arduino code**                  | Push the arduino code to the GitHub                                                                    | :hourglass_flowing_sand: |          |
 | **Write about the hardware**               | Write about the hardware used in this prototype to represent the smart objects.                        | :hourglass_flowing_sand: |          |
 
