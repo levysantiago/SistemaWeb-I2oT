@@ -41,8 +41,6 @@ Currently I'm improving the documentation of this project to help others to unde
 | **List all the service routes**            | List the routes created in the servers showing the HTTP method and what is used for.                   | :hourglass_flowing_sand: |          |
 | **Improve the code documentation/javadoc** | Improve the documentation of all the code.                                                             | :hourglass_flowing_sand: |          |
 
-## The project
-
 ## Project Architecture
 
 Basically the system architecture diagram flows like this:
@@ -51,10 +49,10 @@ Basically the system architecture diagram flows like this:
     <img src="https://i.imgur.com/MsFHP42.png" alt="Image"/>
 </div>
 
-Here I will explain each layer breafly:
+Here I will explain each layer briefly:
 
 - **Model:**
-  The model is the definition of the objects that will be persisted to the database and also used by the system as a normal object manipulation. In this layer I created a Generic Model where were created all the common caracteristics that all objects will have (e.g. ID and some set and get functions), and all the other models inherit from this Generic Model these characteristics, so that we can access the inherited caracteristics and also create others that are specific for this object/model.
+  The model is the definition of the objects that will be persisted to the database and also used by the system as a normal object manipulation. In this layer I created a Generic Model where were created all the common characteristics that all objects will have (e.g. ID and some set and get functions), and all the other models inherit from this Generic Model these characteristics, so that we can access the inherited characteristics and also create others that are specific for this object/model.
 
 - **Database:**
   The database I used for this this project is the MySQL, but it could be anyone, it was a choice based in the popularity and the highly use of this database by enterprises. To manage the database, the MySQL Workbench was used, To understand more about configuration, see the [Getting Started page](https://github.com/Levysantiago/SistemaWeb-I2oT/blob/master/GETTING_STARTED.md).
@@ -77,7 +75,7 @@ Here I will explain each layer breafly:
   The ontology is where some objects are configured and classified in order to infer new information about them and return to the system which will execute some decision. This ontology is an extension of the [IoT-Lite](https://www.w3.org/Submission/iot-lite/), a light ontology for IoT devices, we took this ontology and created some more classes that we needed to use within this project. The ontology is located in SistemaWeb-I2oT/src/main/java/ontology/i2otology.owl.
 
 - **Ontology Model:**
-  It's similar to the Model layer, the difference is that we define the caracteristics thinking about the Ontology and not the Database, because of that, these models cannot inherits from the GenericModel once the Ontology model caracteristics are different from the Database model caracteristics.
+  It's similar to the Model layer, the difference is that we define the characteristics thinking about the Ontology and not the Database, because of that, these models cannot inherits from the GenericModel once the Ontology model characteristics are different from the Database model characteristics.
 
 - **[Jena Library:](https://jena.apache.org/)**
   Is the library created by the Apache used to communicate with the Ontology file. [Here](https://jena.apache.org/getting_started/index.html) you can see more information about the documentation. This library also offers some methods where we can activate the reasoner and make some inferences inside the ontology.
@@ -88,6 +86,10 @@ Here I will explain each layer breafly:
 - **Ontology Service:**
   Similar to the Service, but will serve the ontology routes using the Ontology DAO layer and the Ontology Model layer.
 
+## The project
+
+In this section I'll show the project working locally. Well, as said in the beginning
+
 ## Getting Started
 
 Go to the [Getting Started page](https://github.com/Levysantiago/SistemaWeb-I2oT/blob/master/GETTING_STARTED.md)
@@ -97,6 +99,6 @@ Go to the [Getting Started page](https://github.com/Levysantiago/SistemaWeb-I2oT
 - Jauberth Abijaude
 - Péricles Sobreira
 - Fabiola Greve
-- Levy Santiago
+- [Levy Santiago](levysantiago.com)
 
-You can ask me anything, here is my email: **levyssantiago@gmail.com**, I have done this project for a little while so I don't remmember much everything I did, but I'm willing to help with any problems you might have about configuring the project to your machine.
+You can ask me anything, here is my email: **levyssantiago@gmail.com**, I have done this project for a little while so I don't remember much everything I did, but I'm willing to help with any problems you might have about configuring the project to your machine.

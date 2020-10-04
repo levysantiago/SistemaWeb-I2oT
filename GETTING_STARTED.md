@@ -58,7 +58,7 @@ Then you choose `"Import from Self-Contained File"` and browse the right .sql fi
     <img src="https://i.imgur.com/TzQbpnR.png" alt="Image"/>
 </div>
 
-After importing the database, you'll be able to iteract with it, accessing the tab `Schemas`.
+After importing the database, you'll be able to interact with it, accessing the tab `Schemas`.
 
 <div align="center">
     <img src="https://i.imgur.com/qUqzBxY.png" alt="Image"/>
@@ -103,7 +103,7 @@ Here you will update the **filePath** variable to the right path of the ontology
 
 ## Configuring the Apache Tomcat
 
-[This video](https://www.youtube.com/watch?v=aJ7kdjzIVcw&list=PL_GwGUsBlNyfI0W3ggfffhBdJUqB4981Z&index=32&ab_channel=S%C3%A9rgioRobertoDelfino) explains all the proccess of downloading and configuring the Tomcat inside the Eclipse, but I will explain breafly here too. In this project I used the Tomcat version 8.0.53.
+[This video](https://www.youtube.com/watch?v=aJ7kdjzIVcw&list=PL_GwGUsBlNyfI0W3ggfffhBdJUqB4981Z&index=32&ab_channel=S%C3%A9rgioRobertoDelfino) explains all the process of downloading and configuring the Tomcat inside the Eclipse, but I will explain briefly here too. In this project I used the Tomcat version 8.0.53.
 The Tomcat is the server I used to run the project. To install it, you will access the [Tomcat download page](https://archive.apache.org/dist/tomcat/tomcat-8/v8.0.53/bin/) and choose one of the following compacted packages:
 
 <div align="center">
