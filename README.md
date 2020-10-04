@@ -30,7 +30,7 @@ To understand more about the project, there are some articles and reports you ca
 Basically the system architecture diagram flows like this:
 
 <div align="center">
-    <img src="https://i.imgur.com/OUTvCkU.png" alt="Image"/>
+    <img src="https://i.imgur.com/MsFHP42.png" alt="Image"/>
 </div>
 
 Here I will explain each layer breafly:
