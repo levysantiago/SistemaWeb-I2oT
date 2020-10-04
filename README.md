@@ -25,7 +25,25 @@ To understand more about the project, there are some articles and reports you ca
 - [Apache Jena](https://jena.apache.org/)
 - Protégé
 
-## Architecture
+## Documentation improvements
+
+Currently I'm improving the documentation of this project to help others to understand what I did and how you can contribute with the community in this field. This table shows the goals and tasks I have reached and what are the ones I still need to complete:
+
+| Goal                                   | Description                                                                                            | Status                   | Date     |
+| -------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------ | -------- |
+| Update Repository                      | Structure the project and update the GitHub repository.                                                | :heavy_check_mark:       | 10/03/20 |
+| Write Getting Started                  | Write a getting started readme with the configuration needed to run the project locally.               | :heavy_check_mark:       | 10/03/20 |
+| Write Architecture readme              | Write about the architecture/layers I used in this project.                                            | :heavy_check_mark:       | 10/04/20 |
+| Write a table of tasks                 | Write about all tasks I have done and what must be done to continue improve the project documentation. | :heavy_check_mark:       | 10/04/20 |
+| Write a project overview               | Write about how the project should work, what are the pages, what is done until now.                   | :hourglass_flowing_sand: |          |
+| Write Ontology readme                  | Write a readme about the ontology and how to get started using the Protégé.                            | :hourglass_flowing_sand: |          |
+| Write a Contributing readme            | Write about how someone can contribute to this project using this repository.                          | :hourglass_flowing_sand: |          |
+| List all the service routes            | List the routes created in the servers showing the HTTP method and what is used for.                   | :hourglass_flowing_sand: |          |
+| Improve the code documentation/javadoc | Improve the documentation of all the code.                                                             | :hourglass_flowing_sand: |          |
+
+## The project
+
+## Project Architecture
 
 Basically the system architecture diagram flows like this:
 
@@ -50,7 +68,7 @@ Here I will explain each layer breafly:
 - **Controller:**
   The controller layer in this case is used to call the Service routes and then update the view when requested by it. It needs to use the Model to "understand" how to interact with the objects returned by the services. It also connects to the Ontology Service and Ontology Model that will work similarly to the Service and Model layers.
 
-  `OBS: In some framewors the concept of the Controller changes. Some of them abstracts the Service layer and uses the Controller as the routes definer. So in this case the Controller offer the RESTful routes and the View layer interact with the Controller through the RESTful API. For example, in javascript you can use the Adonis.js as the server to offer the Service through the Controller layer, and use the React.js to construct the View layer and the Axios.js to make requests to the Adonis server.`
+  `OBS: In some frameworks the concept of the Controller changes. Some of them abstracts the Service layer and uses the Controller as the routes definer. So in this case the Controller offer the RESTful routes and the View layer interact with the Controller through the RESTful API. For example, in javascript you can use the Adonis.js as the server to offer the Service through the Controller layer, and use the React.js to construct the View layer and the Axios.js to make requests to the Adonis server.`
 
 - **View:**
   The view is the frontend HTML tags that will communicate with the Controller to get the updated data received by the requests to the services. The view pages are located at SistemaWeb-I2oT/src/main/webapp/pages. When you run the Tomcat server, it will serve the services and also the view pages, and you are able to access the routes through some RESTful API caller (as [Insomnia](https://insomnia.rest/)) to make GETs and POSTs HTML requests and use the browser to access the pages.
@@ -73,3 +91,12 @@ Here I will explain each layer breafly:
 ## Getting Started
 
 Go to the [Getting Started page](https://github.com/Levysantiago/SistemaWeb-I2oT/blob/master/GETTING_STARTED.md)
+
+## Authors
+
+- Jauberth Abijaude
+- Péricles Sobreira
+- Fabiola Greve
+- Levy Santiago
+
+You can ask me anything, here is my email: **levyssantiago@gmail.com**, I have done this project for a little while so I don't remmember much everything I did, but I'm willing to help with any problems you might have about configuring the project to your machine.
