@@ -99,6 +99,6 @@ Go to the [Getting Started page](https://github.com/Levysantiago/SistemaWeb-I2oT
 - Jauberth Abijaude
 - Péricles Sobreira
 - Fabiola Greve
-- [Levy Santiago](levysantiago.com)
+- [Levy Santiago](http://levysantiago.com)
 
 You can ask me anything, here is my email: **levyssantiago@gmail.com**, I have done this project for a little while so I don't remember much everything I did, but I'm willing to help with any problems you might have about configuring the project to your machine.
