@@ -25,21 +25,21 @@ To understand more about the project, there are some articles and reports you ca
 - [Apache Jena](https://jena.apache.org/)
 - Protégé
 
-## Documentation improvements
+## Documentation Improvements
 
 Currently I'm improving the documentation of this project to help others to understand what I did and how you can contribute with the community in this field. This table shows the goals and tasks I have reached and what are the ones I still need to complete:
 
-| Goal                                   | Description                                                                                            | Status                   | Date     |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------ | ------------------------ | -------- |
-| Update Repository                      | Structure the project and update the GitHub repository.                                                | :heavy_check_mark:       | 10/03/20 |
-| Write Getting Started                  | Write a getting started readme with the configuration needed to run the project locally.               | :heavy_check_mark:       | 10/03/20 |
-| Write Architecture readme              | Write about the architecture/layers I used in this project.                                            | :heavy_check_mark:       | 10/04/20 |
-| Write a table of tasks                 | Write about all tasks I have done and what must be done to continue improve the project documentation. | :heavy_check_mark:       | 10/04/20 |
-| Write a project overview               | Write about how the project should work, what are the pages, what is done until now.                   | :hourglass_flowing_sand: |          |
-| Write Ontology readme                  | Write a readme about the ontology and how to get started using the Protégé.                            | :hourglass_flowing_sand: |          |
-| Write a Contributing readme            | Write about how someone can contribute to this project using this repository.                          | :hourglass_flowing_sand: |          |
-| List all the service routes            | List the routes created in the servers showing the HTTP method and what is used for.                   | :hourglass_flowing_sand: |          |
-| Improve the code documentation/javadoc | Improve the documentation of all the code.                                                             | :hourglass_flowing_sand: |          |
+| Goal                                       | Description                                                                                            | Status                   | Date     |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------ | -------- |
+| **Update Repository**                      | Structure the project and update the GitHub repository.                                                | :heavy_check_mark:       | 10/03/20 |
+| **Write Getting Started**                  | Write a getting started readme with the configuration needed to run the project locally.               | :heavy_check_mark:       | 10/03/20 |
+| **Write Architecture readme**              | Write about the architecture/layers I used in this project.                                            | :heavy_check_mark:       | 10/04/20 |
+| **Write a table of tasks**                 | Write about all tasks I have done and what must be done to continue improve the project documentation. | :heavy_check_mark:       | 10/04/20 |
+| **Write a project overview**               | Write about how the project should work, what are the pages, what is done until now.                   | :hourglass_flowing_sand: |          |
+| **Write Ontology readme**                  | Write a readme about the ontology and how to get started using the Protégé.                            | :hourglass_flowing_sand: |          |
+| **Write a Contributing readme**            | Write about how someone can contribute to this project using this repository.                          | :hourglass_flowing_sand: |          |
+| **List all the service routes**            | List the routes created in the servers showing the HTTP method and what is used for.                   | :hourglass_flowing_sand: |          |
+| **Improve the code documentation/javadoc** | Improve the documentation of all the code.                                                             | :hourglass_flowing_sand: |          |
 
 ## The project
 
