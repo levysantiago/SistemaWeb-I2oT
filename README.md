@@ -37,8 +37,8 @@ Currently I'm improving the documentation of this project to help others to unde
 | **Write a table of tasks**                 | Write about all tasks I have done and what must be done to continue improve the project documentation. | :heavy_check_mark:       | 10/04/20 |
 | **Write a project overview**               | Write about how the project should work, what are the pages, what is done until now.                   | :heavy_check_mark:       | 10/04/20 |
 | **Push the arduino code**                  | Push the arduino code to the GitHub                                                                    | :heavy_check_mark:       | 22/02/21 |
-| **Push the hardware schematic**            | Push the hardware schematic to the GitHub                                                              | :hourglass_flowing_sand: |          |
-| **Write about the hardware**               | Write about the hardware used in this prototype to represent the smart objects.                        | :hourglass_flowing_sand: |          |
+| **Write about the hardware**               | Write about the hardware used in this prototype.                                                       | :heavy_check_mark:       | 23/02/21 |
+| **Push the hardware schematic**            | Push the hardware schematic to the GitHub                                                              | :heavy_check_mark:       | 20/04/21 |
 | **Improve the code documentation/javadoc** | Improve the documentation of all the code.                                                             | :hourglass_flowing_sand: |          |
 | **Write Ontology readme**                  | Write a readme about the ontology and how to get started using the Protégé.                            | :hourglass_flowing_sand: |          |
 | **Write a Contributing readme**            | Write about how someone can contribute to this project using this repository.                          | :hourglass_flowing_sand: |          |
