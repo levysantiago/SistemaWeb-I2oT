@@ -92,4 +92,6 @@ $ sudo chmod a+rw /dev/tty/[port]
 
 ### Schematic
 
-`Soon I'll be posting the schematic of the hardware`
+<div align="center">
+    <img src="https://github.com/Levysantiago/SistemaWeb-I2oT/blob/master/hardware/schema.png" alt="Schema"/>
+</div>
